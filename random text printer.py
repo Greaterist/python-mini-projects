@@ -40,7 +40,7 @@ def timedRandomPrintWithMistakes(text, min = 0.01, max = 0.01, chance = 0.2, mis
             mistakes+=1
             output = output + choice(errorLetters)
             #output = text[0:i]+(choice(ascii_letters)*mistakes)
-            yield output
+            yield {'text':output, isSpotted:isSpotted}
         else:
             if mistakes>0:
                 mistakes-=1
@@ -50,13 +50,13 @@ def timedRandomPrintWithMistakes(text, min = 0.01, max = 0.01, chance = 0.2, mis
                 isSpotted = False
                 i+=1
                 output = text[0:i]
-            yield output
+            yield {'text':output, 'isSpotted':isSpotted}
 
         
 
 
 for x in timedRandomPrintWithMistakes(input, max=0.1):
-    print(x)
+    print(x['text'])
 
 
 
